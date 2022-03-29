@@ -33,6 +33,14 @@ export default function App(props) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        {(function (i, s, o, g, r, a, m) {
+          i['_wmid'] = '04308f1f-deb1-4d6c-a413-3d79f026b03b';
+          i['wms'] = 1 * new Date();
+          (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//cdn.webmetric.ir/webmetric.js')}
       </Head>
 
       <MantineProvider
