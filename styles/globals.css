@@ -1,29 +1,70 @@
 @font-face {
-  font-family: 'Kalameh';
-  src: url('/fonts/Kalameh-Light.woff2') format('woff2');
-  font-weight: 100 200;
+  font-family: dana;
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/dana/woff2/dana-bold.woff2') format('woff2'),
+    url('/fonts/dana/woff/dana-bold.woff') format('woff');
 }
 @font-face {
-  font-family: 'Kalameh';
-  src: url('/fonts/Kalameh-Regular.woff2') format('woff2');
-  font-weight: 300;
-}
-@font-face {
-  font-family: 'Kalameh';
-  src: url('/fonts/Kalameh-Medium.woff2') format('woff2');
-  font-weight: 400;
+  font-family: dana;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/dana/woff2/dana-regular.woff2') format('woff2'),
+    url('/fonts/dana/woff/dana-regular.woff') format('woff');
 }
 html,
 body {
   direction: rtl;
-  font-family: 'Kalameh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 400;
+  font-family: dana, 'dana', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
+  font-weight: normal;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 #__next {
   height: 100%;
+}
+.eventcard{
+  margin: 0 auto;
+  max-width: 360px;
+  position: relative;
+  background-color: blueviolet;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  padding: 10px;
+  height: 150px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.eventcard__detail{
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: white;
+  margin-bottom: 2px;
+}
+.eventcard__detail span{
+  background-color:#2a2a2a;
+  padding: 5px 5px 0px 5px;
+  border-radius: 5px;
+  font-size: 14px;
+    
+}
+.eventcard:hover{
+  transform: scale(1.05);
+}
+.eventcard:hover div.eventcard__detail{
+  height: 25px;
+}
+
+
+@media (max-width: 768px) {
+  .eventcard__detail{
+    height: 25px;
+  }
 }
