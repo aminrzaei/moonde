@@ -1,12 +1,11 @@
 import '../styles/globals.css';
 import { useState, useEffect } from 'react';
-
 import Head from 'next/head';
 import Router from 'next/router';
 
 import ProgressBar from '@badrap/bar-of-progress';
 
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
 import { AuthProvider } from '../contexts/AuthContext';
@@ -15,6 +14,7 @@ import { SpotlightProvider } from '@mantine/spotlight';
 import useRefreshToken from '../hooks/useRefreshToken';
 import useAuth from '../hooks/useAuth';
 
+import { getCookie, setCookies } from 'cookies-next';
 import rtlPlugin from 'stylis-plugin-rtl';
 
 import {
@@ -67,6 +67,18 @@ const App = (props) => {
   const { auth } = useAuth();
   const refresh = useRefreshToken();
   const [isLoading, setIsLoading] = useState(false);
+  const { Component, pageProps } = props;
+  const [colorScheme, setColorScheme] = useState(props.colorScheme);
+
+  const toggleColorScheme = (value) => {
+    const nextColorScheme =
+      value || (colorScheme === 'dark' ? 'light' : 'dark');
+    setColorScheme(nextColorScheme);
+    // when color scheme is updated save it to cookie
+    setCookies('mantine-color-scheme', nextColorScheme, {
+      maxAge: 60 * 60 * 24 * 30,
+    });
+  };
 
   // const [isLoading, setIsLoading] = useState(true);
   // useEffect(() => {
@@ -85,8 +97,6 @@ const App = (props) => {
   //   return () => (isMounted = false);
   // }, []);
 
-  const { Component, pageProps } = props;
-
   return isLoading ? null : (
     <>
       <Head>
@@ -98,34 +108,44 @@ const App = (props) => {
       </Head>
 
       <AuthProvider>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          emotionOptions={{ key: 'rtl', stylisPlugins: [rtlPlugin] }}
-          theme={{
-            dir: 'rtl',
-            fontFamily: 'dana ,Segoe UI ,Tahoma ,Geneva ,Verdana ,sans-serif',
-            colorScheme: 'light',
-          }}
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
         >
-          <NotificationsProvider position="top-left" autoClose={5000}>
-            <ModalsProvider>
-              <SpotlightProvider
-                actions={spotlightAction}
-                searchIcon={<SearchIcon size={18} />}
-                searchPlaceholder="رویداد مد نظر را جستجو کنید ..."
-                shortcut="ctrl + k"
-                nothingFoundMessage="چیزی یافت نشد ..."
-                onQueryChange={(query) => console.log(query)}
-              >
-                <Component {...pageProps} />
-              </SpotlightProvider>
-            </ModalsProvider>
-          </NotificationsProvider>
-        </MantineProvider>
+          <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+            emotionOptions={{ key: 'rtl', stylisPlugins: [rtlPlugin] }}
+            theme={{
+              colorScheme,
+              dir: 'rtl',
+              fontFamily: 'dana ,Segoe UI ,Tahoma ,Geneva ,Verdana ,sans-serif',
+            }}
+          >
+            <NotificationsProvider position="top-left" autoClose={5000}>
+              <ModalsProvider>
+                <SpotlightProvider
+                  actions={spotlightAction}
+                  searchIcon={<SearchIcon size={18} />}
+                  searchPlaceholder="رویداد مد نظر را جستجو کنید ..."
+                  shortcut="ctrl + k"
+                  nothingFoundMessage="چیزی یافت نشد ..."
+                  onQueryChange={(query) => console.log(query)}
+                >
+                  <Component {...pageProps} />
+                </SpotlightProvider>
+              </ModalsProvider>
+            </NotificationsProvider>
+          </MantineProvider>
+        </ColorSchemeProvider>
       </AuthProvider>
     </>
   );
 };
+
+App.getInitialProps = ({ ctx }) => ({
+  // get color scheme from cookie
+  colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
+});
 
 export default App;

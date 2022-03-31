@@ -15,6 +15,10 @@ import {
 import SearchInput from '../SearchInput';
 import HeaderMenu from '../HeaderMenu';
 import CardsContainer from '../CardsContainer';
+import NavLink from '../NavLink';
+import { HeartIcon, HomeIcon } from '@primer/octicons-react';
+import NavSetting from '../NavSetting';
+import NavTime from '../NavTime';
 
 const HomeHeader = () => {
   const [opened, setOpened] = useState(false);
@@ -30,7 +34,26 @@ const HomeHeader = () => {
           hidden={!opened}
           width={{ sm: 180, lg: 230 }}
         >
-          <Text>Application navbar</Text>
+          <Navbar.Section grow mt="md">
+            <NavLink
+              icon={<HomeIcon size={18} />}
+              label="همه‌ی رویداد ها"
+              isActive={true}
+              url="/home"
+            />
+            <NavLink
+              icon={<HeartIcon size={18} />}
+              label="رویداد های من"
+              isActive={false}
+              url="/home"
+            />
+          </Navbar.Section>
+          <Navbar.Section>
+            <NavTime />
+          </Navbar.Section>
+          <Navbar.Section>
+            <NavSetting />
+          </Navbar.Section>
         </Navbar>
       }
       header={

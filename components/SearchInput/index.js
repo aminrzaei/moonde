@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-import { TextInput } from '@mantine/core';
+import { TextInput, Kbd } from '@mantine/core';
 import { useSpotlight } from '@mantine/spotlight';
 import { SearchIcon } from '@primer/octicons-react';
 const SearchInput = ({ inputWidth, ...others }) => {
