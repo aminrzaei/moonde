@@ -13,7 +13,7 @@ const NavLink = ({ icon, label, isActive, url }) => {
         alignItems: 'center',
         width: '100%',
         transition: 'all 0.3s ease',
-        padding: '8px 12px 6px 12px',
+        padding: '7px 12px 5px 12px',
         marginBottom: '5px',
         borderRadius: theme.radius.sm,
         backgroundColor: isActive ? '#CAFFF1' : 'transparent',
