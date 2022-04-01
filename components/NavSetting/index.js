@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Divider, Group, Text } from '@mantine/core';
+import { Button, Divider, Group, Text } from '@mantine/core';
 import { useMantineColorScheme } from '@mantine/core';
 import { MoonIcon, SunIcon } from '@primer/octicons-react';
 
@@ -7,9 +7,9 @@ const NavSetting = () => {
   const dark = colorScheme === 'dark';
   return (
     <div>
-      <Divider mb="sm" variant="dashed" />
+      <Divider my="sm" variant="dashed" />
       <Text>تنظیمات</Text>
-      <Group mt="sm" style={{ justifyContent: 'space-between' }}>
+      <Group mt="xs" style={{ justifyContent: 'space-between' }}>
         <Button
           style={{ padding: '0 8px' }}
           styles={{

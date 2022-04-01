@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+const { DateTime } = require('luxon');
 
 const Clock = () => {
   const [time, setTime] = useState(new Date());
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -9,7 +11,11 @@ const Clock = () => {
 
     return () => clearInterval(timer);
   }, []);
-  return <span>{time.toLocaleString()}</span>;
+  return (
+    <>
+      <span>{DateTime.fromJSDate(time).toFormat("HH':'mm':'ss")}</span>
+    </>
+  );
 };
 
 export default Clock;
