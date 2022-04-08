@@ -119,7 +119,8 @@ const App = (props) => {
             theme={{
               colorScheme,
               dir: 'rtl',
-              fontFamily: 'dana ,Segoe UI ,Tahoma ,Geneva ,Verdana ,sans-serif',
+              fontFamily:
+                'kalameh ,Segoe UI ,Tahoma ,Geneva ,Verdana ,sans-serif',
             }}
           >
             <NotificationsProvider position="top-left" autoClose={5000}>

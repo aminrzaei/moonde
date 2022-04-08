@@ -1,26 +1,23 @@
 import { useState } from 'react';
+
 import {
   AppShell,
   Navbar,
   Header,
-  Footer,
-  Aside,
   Text,
   MediaQuery,
   Burger,
-  TextInput,
-  Divider,
-  Space,
 } from '@mantine/core';
-import SearchInput from '../SearchInput';
-import HeaderMenu from '../HeaderMenu';
-import CardsContainer from '../CardsContainer';
-import NavLink from '../NavLink';
-import { HeartIcon, HomeIcon } from '@primer/octicons-react';
-import NavSetting from '../NavSetting';
-import NavTime from '../NavTime';
 
-const HomeHeader = () => {
+import { HeartIcon, HomeIcon } from '@primer/octicons-react';
+
+import SearchInput from '../components/SearchInput';
+import HeaderMenu from '../components/HeaderMenu';
+import NavLink from '../components/NavLink';
+import NavSetting from '../components/NavSetting';
+import NavTime from '../components/NavTime';
+
+const MainLayout = ({ children }) => {
   const [opened, setOpened] = useState(false);
   return (
     <AppShell
@@ -91,22 +88,9 @@ const HomeHeader = () => {
         </Header>
       }
     >
-      <Space h={10} />
-      <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-        <SearchInput inputWidth="100%" />
-      </MediaQuery>
-      <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-        <Divider
-          mt={25}
-          mb={20}
-          label="رویداد ها"
-          labelPosition="center"
-          variant="dashed"
-        />
-      </MediaQuery>
-      <CardsContainer />
+      {children}
     </AppShell>
   );
 };
 
-export default HomeHeader;
+export default MainLayout;

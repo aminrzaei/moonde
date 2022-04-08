@@ -1,9 +1,14 @@
 import { useState, useRef } from 'react';
 
-import { TextInput, Kbd } from '@mantine/core';
+import { TextInput } from '@mantine/core';
+import { useMantineColorScheme } from '@mantine/core';
 import { useSpotlight } from '@mantine/spotlight';
+
 import { SearchIcon } from '@primer/octicons-react';
+
 const SearchInput = ({ inputWidth, ...others }) => {
+  const { colorScheme } = useMantineColorScheme();
+  const isThemeDark = colorScheme === 'dark';
   const spotlight = useSpotlight();
   return (
     <TextInput
@@ -14,17 +19,16 @@ const SearchInput = ({ inputWidth, ...others }) => {
           width: inputWidth,
         },
         input: {
-          backgroundColor: '#ddd',
+          backgroundColor: isThemeDark ? '#2c2e33' : '#fff',
           fontSize: '13px',
           paddingTop: '2px',
-          color: 'red',
-          border: 'none',
+          border: isThemeDark ? 'none' : '1px solid #dee2e6',
           '::placeholder': {
-            color: '#000',
+            color: '#909296',
           },
         },
         rightSection: {
-          color: '#4E4E4E',
+          color: '#909296',
         },
       }}
       placeholder="رویداد مورد نظر خود را جستجو کنید ..."

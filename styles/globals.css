@@ -1,23 +1,30 @@
 @font-face {
-  font-family: dana;
+  font-family: kalameh;
   font-style: normal;
   font-weight: bold;
-  src: url('/fonts/dana/woff2/dana-bold.woff2') format('woff2'),
-    url('/fonts/dana/woff/dana-bold.woff') format('woff');
+  src: url('/fonts/kalameh/woff2/kalameh-bold.woff2') format('woff2'),
+    url('/fonts/kalameh/woff/kalameh-bold.woff') format('woff');
 }
 @font-face {
-  font-family: dana;
+  font-family: kalameh;
   font-style: normal;
   font-weight: normal;
-  src: url('/fonts/dana/woff2/dana-regular.woff2') format('woff2'),
-    url('/fonts/dana/woff/dana-regular.woff') format('woff');
+  src: url('/fonts/kalameh/woff2/kalameh-medium.woff2') format('woff2'),
+    url('/fonts/kalameh/woff/kalameh-medium.woff') format('woff');
+}
+@font-face {
+  font-family: kalameh;
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/kalameh/woff2/kalameh-regular.woff2') format('woff2'),
+    url('/fonts/kalameh/woff/kalameh-regular.woff') format('woff');
 }
 html,
 body {
   direction: rtl;
-  font-family: dana, 'dana', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: kalameh, 'kalameh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 300;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -25,9 +32,13 @@ body {
 #__next {
   height: 100%;
 }
+a{
+
+  text-decoration: none;
+}
 .eventcard{
   margin: 0 auto;
-  max-width: 360px;
+  /* max-width: 360px; */
   position: relative;
   background-color: blueviolet;
   border-radius: 8px;
@@ -50,7 +61,7 @@ body {
 }
 .eventcard__detail span{
   background-color:#2a2a2a;
-  padding: 5px 5px 0px 5px;
+  padding: 2px 5px;
   border-radius: 5px;
   font-size: 14px;
     
@@ -66,5 +77,8 @@ body {
 @media (max-width: 768px) {
   .eventcard__detail{
     height: 25px;
+  }
+  .eventpage__detail-container{
+    flex-direction: column-reverse;
   }
 }

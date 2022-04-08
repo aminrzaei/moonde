@@ -4,7 +4,7 @@ import { MoonIcon, SunIcon } from '@primer/octicons-react';
 
 const NavSetting = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
+  const isThemeDark = colorScheme === 'dark';
   return (
     <div>
       <Divider my="sm" variant="dashed" />
@@ -21,8 +21,10 @@ const NavSetting = () => {
           }}
           fullWidth
           variant="subtle"
-          rightIcon={dark ? <SunIcon size={16} /> : <MoonIcon size={16} />}
-          color={dark ? 'green' : 'orange'}
+          rightIcon={
+            isThemeDark ? <SunIcon size={16} /> : <MoonIcon size={16} />
+          }
+          color={isThemeDark ? 'green' : 'orange'}
           onClick={() => toggleColorScheme()}
         >
           <Text style={{ fontSize: '15px' }}>تم وب سایت</Text>
