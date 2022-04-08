@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const EventCard = () => {
   return (
-    <Link href="/wdawdwdawd" prefetch={true}>
+    <Link href="/wdawdwdawd">
       <a
         className="eventcard"
         style={{

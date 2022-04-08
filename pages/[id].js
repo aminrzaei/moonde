@@ -28,7 +28,7 @@ const Event = () => {
             </p>
             <h1
               style={{
-                margin: '8px 0 0 0',
+                margin: '0',
                 fontWeight: 'normal',
                 fontSize: '42px',
               }}
@@ -47,7 +47,7 @@ const Event = () => {
             <p style={{ color: '#2767d4', margin: '0', fontSize: '14px' }}>
               ساعت 21:00
             </p>
-            <div style={{ margin: '8px 0' }}>
+            <div style={{ margin: '15px 0' }}>
               <EventTag color="#2767d4">تعطیل</EventTag>
               <EventTag color="#3D22C7">جام جهانی</EventTag>
             </div>
