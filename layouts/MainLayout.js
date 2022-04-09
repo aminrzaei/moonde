@@ -17,6 +17,8 @@ import NavLink from '../components/NavLink';
 import NavSetting from '../components/NavSetting';
 import NavTime from '../components/NavTime';
 
+const HEADER_HEIGHT = 50;
+
 const MainLayout = ({ children }) => {
   const [opened, setOpened] = useState(false);
   return (
@@ -28,6 +30,7 @@ const MainLayout = ({ children }) => {
         <Navbar
           p="md"
           hiddenBreakpoint="sm"
+          height={`calc(100% - ${HEADER_HEIGHT}px)`}
           hidden={!opened}
           width={{ sm: 180, lg: 230 }}
         >
@@ -55,7 +58,7 @@ const MainLayout = ({ children }) => {
       }
       header={
         <Header
-          height={50}
+          height={HEADER_HEIGHT}
           style={{
             display: 'flex',
             justifyContent: 'space-between',
